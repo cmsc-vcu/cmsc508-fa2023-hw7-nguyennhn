@@ -1,7 +1,7 @@
 ---
 title: Homework 7 - Creating a resume database
-author: (your name goes here!)
-date: last-modified
+author: Nguyen-Huy Nguyen
+date: 11-12-2023
 format:
     html:
         theme: cosmo
