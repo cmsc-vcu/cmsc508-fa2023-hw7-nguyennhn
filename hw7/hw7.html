@@ -3376,18 +3376,10 @@ z-index: 1000;
 <p>(include a brief description of what is in this document)</p>
 <p>(Please clean up any comments that I included. This is a scaffold document.)</p>
 <p>GITHUB URL: <a href="https://github.com/cmsc-vcu/cmsc508-fa2023-hw7-nguyennhn" class="uri">https://github.com/cmsc-vcu/cmsc508-fa2023-hw7-nguyennhn</a></p>
-<div class="cell" data-execution_count="2">
-<div class="cell-output cell-output-stdout">
-<pre><code>Missing CMSC508_USER in .env file
-Missing CMSC508_PASSWORD in .env file
-Missing CMSC508_HOST in .env file
-Missing HW7_DB_NAME in .env file</code></pre>
-</div>
-</div>
 <div class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>Database/SQL Error:
-(pymysql.err.OperationalError) (2003, &quot;Can&#39;t connect to MySQL server on &#39;None&#39; ([Errno 8] nodename nor servname provided, or not known)&quot;)
+(pymysql.err.OperationalError) (2003, &quot;Can&#39;t connect to MySQL server on &#39;localhost&#39; ([Errno 61] Connection refused)&quot;)
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
 </code></pre>
 </div>
@@ -3431,7 +3423,7 @@ Missing HW7_DB_NAME in .env file</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>An error occurred:
 
-(pymysql.err.OperationalError) (2003, &quot;Can&#39;t connect to MySQL server on &#39;None&#39; ([Errno 8] nodename nor servname provided, or not known)&quot;)
+(pymysql.err.OperationalError) (2003, &quot;Can&#39;t connect to MySQL server on &#39;localhost&#39; ([Errno 61] Connection refused)&quot;)
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
 
 Ignoring and moving on.</code></pre>
@@ -3473,16 +3465,16 @@ Ignoring and moving on.</code></pre>
 <h1>List skill names, tags, and descriptions ordered by name</h1>
 <p>(here a sample query)</p>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sql <span class="op">=</span> <span class="ss">f&quot;&quot;&quot;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ss">select * from people</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ss">&quot;&quot;&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sql <span class="op">=</span> <span class="ss">f&quot;&quot;&quot;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ss">select * from people</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ss">&quot;&quot;&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>(and here is a sample result from the query)</p>
 <div class="cell" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
 <pre><code>An error occurred:
 
-(pymysql.err.OperationalError) (2003, &quot;Can&#39;t connect to MySQL server on &#39;None&#39; ([Errno 8] nodename nor servname provided, or not known)&quot;)
+(pymysql.err.OperationalError) (2003, &quot;Can&#39;t connect to MySQL server on &#39;localhost&#39; ([Errno 61] Connection refused)&quot;)
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
 
 Ignoring and moving on.</code></pre>
