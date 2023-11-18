@@ -65,9 +65,9 @@ insert into skills(id, name, description, tag) values (8,'HR Skills','HR Skills'
 # All other fields can default to NULL.
 
 CREATE TABLE people (
-    people_id int,
-    people_first_name varchar (256),
-    people_last_name varchar(256) NOT NULL,
+    id int,
+    first_name varchar (256),
+    last_name varchar(256) NOT NULL,
     email VARCHAR(256),
     linkedin_url VARCHAR(256),
     headshot_url VARCHAR(256),
@@ -75,7 +75,7 @@ CREATE TABLE people (
     brief_bio TEXT,
     date_joined DATE NOT NULL,
 
-    PRIMARY KEY (people_id)
+    PRIMARY KEY (id)
 );
 
 # Section 5
@@ -83,12 +83,12 @@ CREATE TABLE people (
 # Their last names must exactly be “Person 1”, “Person 2”, etc.
 # Other fields are for you to assign.
 
-insert into people (people_id,people_last_name,date_joined) values (1,'Person 1','2023-05-08');
-insert into people (people_id,people_last_name,date_joined) values (2,'Person 2','2023-06-04');
-insert into people (people_id,people_last_name,date_joined) values (3,'Person 3','2023-07-17');
-insert into people (people_id,people_last_name,date_joined) values (4,'Person 4','2023-05-27');
-insert into people (people_id,people_last_name,date_joined) values (5,'Person 5','2023-06-25');
-insert into people (people_id,people_last_name,date_joined) values (6,'Person 6','2023-04-28');
+insert into people (id,last_name,date_joined) values (1,'Person 1','2023-05-08');
+insert into people (id,last_name,date_joined) values (2,'Person 2','2023-06-04');
+insert into people (id,last_name,date_joined) values (3,'Person 3','2023-07-17');
+insert into people (id,last_name,date_joined) values (4,'Person 4','2023-05-27');
+insert into people (id,last_name,date_joined) values (5,'Person 5','2023-06-25');
+insert into people (id,last_name,date_joined) values (6,'Person 6','2023-04-28');
 
 
 # Section 6

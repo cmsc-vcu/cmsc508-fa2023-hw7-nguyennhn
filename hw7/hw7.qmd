@@ -10,8 +10,6 @@ format:
         code-copy: true
 ---
 
-(include a brief description of what is in this document)
-
 GITHUB URL:  <https://github.com/cmsc-vcu/cmsc508-fa2023-hw7-nguyennhn>
 
 ```{python}
@@ -99,8 +97,10 @@ This is a Crows-Foot Diagram representing the relationshops between the tables o
 ```{mermaid}
 %%| echo: false
 erDiagram
-    PEOPLE }o--o{ SKILLS : have
-    PEOPLE }o--o{ ROLES : have
+    PEOPLE }o--o{ PEOPLESKILLS : have
+    PEOPLE }o--|{ PEOPLEROLES : have
+    PEOPLESKILLS}o--|{ SKILLS : have
+    PEOPLEROLES}o--|{ ROLES : have
 
     SKILLS{
         int id
@@ -132,9 +132,9 @@ erDiagram
         String name
         String sort_priority
     }
-    PEOPLE_ROLES{
+    PEOPLEROLES{
         int id
-        int people_id
+        int id
         int role_id
         String date_role_acquired
     }
@@ -243,9 +243,9 @@ df
 ### List people names and email addresses ordered by last_name
 ```{python}
 sql = f"""
-SELECT people_last_name, email
+SELECT last_name, email
 FROM people
-ORDER BY people_last_name
+ORDER BY last_name
 """
 ```
 ```{python}
@@ -287,8 +287,8 @@ df
 ### List people names with Skill 6
 ```{python}
 sql = f"""
-SELECT people.people_last_name FROM people
-JOIN peopleskills ON peopleskills.people_id = people.people_id
+SELECT people.last_name FROM people
+JOIN peopleskills ON peopleskills.people_id = people.id
 WHERE peopleskills.skills_id = 6
 """
 ```
@@ -308,9 +308,9 @@ df
 ### List people with a DEVELOPER role
 ```{python}
 sql = f"""
-SELECT people.people_last_name
+SELECT people.last_name
 FROM peopleroles
-JOIN people ON peopleroles.people_id = people.people_id
+JOIN people ON peopleroles.people_id = people.id
 WHERE peopleroles.role_id = 2
 
 """
@@ -333,11 +333,11 @@ df
 ### List names and email addresses of people without skills
 ```{python}
 sql = f"""
-SELECT people.people_last_name, people.email FROM people
+SELECT people.last_name, people.email FROM people
 WHERE NOT EXISTS(
     SELECT 1
     FROM peopleskills
-    WHERE peopleskills.people_id = people.people_id
+    WHERE peopleskills.people_id = people.id
 )
 """
 ```
@@ -384,11 +384,11 @@ df
 ### List people names and skill names with the BOSS role
 ```{python}
 sql = f"""
-SELECT people.people_last_name, skills.name
+SELECT people.last_name, skills.name
 FROM people
-JOIN peopleskills ON people.people_id = peopleskills.people_id
+JOIN peopleskills ON people.id = peopleskills.people_id
 JOIN skills ON peopleskills.skills_id = skills.id
-JOIN peopleroles ON people.people_id = peopleroles.people_id
+JOIN peopleroles ON people.id = peopleroles.people_id
 JOIN roles ON peopleroles.role_id = roles.role_id
 WHERE roles.name = "Boss"
 """

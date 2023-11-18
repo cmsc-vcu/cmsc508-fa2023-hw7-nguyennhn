@@ -3373,7 +3373,6 @@ z-index: 1000;
 
 </header>
 
-<p>(include a brief description of what is in this document)</p>
 <p>GITHUB URL: <a href="https://github.com/cmsc-vcu/cmsc508-fa2023-hw7-nguyennhn" class="uri">https://github.com/cmsc-vcu/cmsc508-fa2023-hw7-nguyennhn</a></p>
 <section id="overview-and-description" class="level2">
 <h2 class="anchored" data-anchor-id="overview-and-description">Overview and description</h2>
@@ -3387,8 +3386,10 @@ z-index: 1000;
 <div>
 <div>
 <pre class="mermaid mermaid-js">erDiagram
-    PEOPLE }o--o{ SKILLS : have
-    PEOPLE }o--o{ ROLES : have
+    PEOPLE }o--o{ PEOPLESKILLS : have
+    PEOPLE }o--|{ PEOPLEROLES : have
+    PEOPLESKILLS}o--|{ SKILLS : have
+    PEOPLEROLES}o--|{ ROLES : have
 
     SKILLS{
         int id
@@ -3420,9 +3421,9 @@ z-index: 1000;
         String name
         String sort_priority
     }
-    PEOPLE_ROLES{
+    PEOPLEROLES{
         int id
-        int people_id
+        int id
         int role_id
         String date_role_acquired
     }
@@ -3440,7 +3441,7 @@ z-index: 1000;
 <p>The <em>people</em> table contains elements that describe attributes of people.</p>
 <p>Below is a list of data in the <em>people</em> table.</p>
 <div class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="105">
 <div>
 
 
@@ -3448,9 +3449,9 @@ z-index: 1000;
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">people_id</th>
-<th data-quarto-table-cell-role="th">people_first_name</th>
-<th data-quarto-table-cell-role="th">people_last_name</th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">first_name</th>
+<th data-quarto-table-cell-role="th">last_name</th>
 <th data-quarto-table-cell-role="th">email</th>
 <th data-quarto-table-cell-role="th">linkedin_url</th>
 <th data-quarto-table-cell-role="th">headshot_url</th>
@@ -3544,7 +3545,7 @@ z-index: 1000;
 <p>The <em>skills</em> table contains elements that describe skills that people might have.</p>
 <p>Below is a list of data in the <em>skills</em> table.</p>
 <div class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="106">
 <div>
 
 
@@ -3645,7 +3646,7 @@ z-index: 1000;
 <p>The <em>roles</em> table contains elements that describe roles that people might have.</p>
 <p>Below is a list of data in the <em>roles</em> table.</p>
 <div class="cell" data-execution_count="7">
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="107">
 <div>
 
 
@@ -3716,7 +3717,7 @@ z-index: 1000;
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ss">&quot;&quot;&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="9">
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="109">
 <div>
 
 
@@ -3788,13 +3789,13 @@ z-index: 1000;
 <h3 class="anchored" data-anchor-id="list-people-names-and-email-addresses-ordered-by-last_name">List people names and email addresses ordered by last_name</h3>
 <div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sql <span class="op">=</span> <span class="ss">f&quot;&quot;&quot;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ss">SELECT people_last_name, email</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ss">SELECT last_name, email</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ss">FROM people</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ss">ORDER BY people_last_name</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ss">ORDER BY last_name</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ss">&quot;&quot;&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="11">
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="111">
 <div>
 
 
@@ -3802,7 +3803,7 @@ z-index: 1000;
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">people_last_name</th>
+<th data-quarto-table-cell-role="th">last_name</th>
 <th data-quarto-table-cell-role="th">email</th>
 </tr>
 </thead>
@@ -3855,7 +3856,7 @@ z-index: 1000;
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ss">&quot;&quot;&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="13">
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="113">
 <div>
 
 
@@ -3890,13 +3891,13 @@ z-index: 1000;
 <h3 class="anchored" data-anchor-id="list-people-names-with-skill-6">List people names with Skill 6</h3>
 <div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sql <span class="op">=</span> <span class="ss">f&quot;&quot;&quot;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ss">SELECT people.people_last_name FROM people</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ss">JOIN peopleskills ON peopleskills.people_id = people.people_id</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ss">SELECT people.last_name FROM people</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ss">JOIN peopleskills ON peopleskills.people_id = people.id</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ss">WHERE peopleskills.skills_id = 6</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ss">&quot;&quot;&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="15">
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="115">
 <div>
 
 
@@ -3904,7 +3905,7 @@ z-index: 1000;
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">people_last_name</th>
+<th data-quarto-table-cell-role="th">last_name</th>
 </tr>
 </thead>
 <tbody>
@@ -3927,15 +3928,15 @@ z-index: 1000;
 <h3 class="anchored" data-anchor-id="list-people-with-a-developer-role">List people with a DEVELOPER role</h3>
 <div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sql <span class="op">=</span> <span class="ss">f&quot;&quot;&quot;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ss">SELECT people.people_last_name</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ss">SELECT people.last_name</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ss">FROM peopleroles</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ss">JOIN people ON peopleroles.people_id = people.people_id</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ss">JOIN people ON peopleroles.people_id = people.id</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ss">WHERE peopleroles.role_id = 2</span></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ss">&quot;&quot;&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="17">
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div class="cell-output cell-output-display" data-execution_count="117">
 <div>
 
 
@@ -3943,7 +3944,7 @@ z-index: 1000;
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">people_last_name</th>
+<th data-quarto-table-cell-role="th">last_name</th>
 </tr>
 </thead>
 <tbody>
@@ -3966,16 +3967,16 @@ z-index: 1000;
 <h3 class="anchored" data-anchor-id="list-names-and-email-addresses-of-people-without-skills">List names and email addresses of people without skills</h3>
 <div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sql <span class="op">=</span> <span class="ss">f&quot;&quot;&quot;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ss">SELECT people.people_last_name, people.email FROM people</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ss">SELECT people.last_name, people.email FROM people</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ss">WHERE NOT EXISTS(</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ss">    SELECT 1</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ss">    FROM peopleskills</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ss">    WHERE peopleskills.people_id = people.people_id</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ss">    WHERE peopleskills.people_id = people.id</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="ss">)</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ss">&quot;&quot;&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="19">
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="119">
 <div>
 
 
@@ -3983,7 +3984,7 @@ z-index: 1000;
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">people_last_name</th>
+<th data-quarto-table-cell-role="th">last_name</th>
 <th data-quarto-table-cell-role="th">email</th>
 </tr>
 </thead>
@@ -4014,7 +4015,7 @@ z-index: 1000;
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="ss">&quot;&quot;&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="21">
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div class="cell-output cell-output-display" data-execution_count="121">
 <div>
 
 
@@ -4048,17 +4049,17 @@ z-index: 1000;
 <h3 class="anchored" data-anchor-id="list-people-names-and-skill-names-with-the-boss-role">List people names and skill names with the BOSS role</h3>
 <div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sql <span class="op">=</span> <span class="ss">f&quot;&quot;&quot;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ss">SELECT people.people_last_name, skills.name</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ss">SELECT people.last_name, skills.name</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ss">FROM people</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ss">JOIN peopleskills ON people.people_id = peopleskills.people_id</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ss">JOIN peopleskills ON people.id = peopleskills.people_id</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ss">JOIN skills ON peopleskills.skills_id = skills.id</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ss">JOIN peopleroles ON people.people_id = peopleroles.people_id</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ss">JOIN peopleroles ON people.id = peopleroles.people_id</span></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="ss">JOIN roles ON peopleroles.role_id = roles.role_id</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ss">WHERE roles.name = &quot;Boss&quot;</span></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="ss">&quot;&quot;&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="23">
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div class="cell-output cell-output-display" data-execution_count="123">
 <div>
 
 
@@ -4066,7 +4067,7 @@ z-index: 1000;
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">people_last_name</th>
+<th data-quarto-table-cell-role="th">last_name</th>
 <th data-quarto-table-cell-role="th">name</th>
 </tr>
 </thead>
@@ -4107,7 +4108,7 @@ z-index: 1000;
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="ss">&quot;&quot;&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="25">
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div class="cell-output cell-output-display" data-execution_count="125">
 <div>
 
 
