@@ -103,14 +103,43 @@ except Exception as e:
 erDiagram
     CUSTOMER ||--o{ ORDER : places
     CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
-    CUSTOMER{
+    SKILLS{
         int id
-        string first_name
-        string last_name
+        String name
+        String description
+        String tag
+        String url
+        String time_commitment
     }
-    DELIVERY-ADDRESS {
+    PEOPLE{
         int id
+        String first_name
+        String last_name
+        String email
+        String linkedin_url
+        String headshot_url
+        String discord_handle
+        String brief_bio
+        String date_joined
     }
+    PEOPLESKILLS{
+        int id
+        int skills_id
+        int people_id
+        String date_acquired
+    }
+    ROLES{
+        int id
+        String name
+        String sort_priority
+    }
+    PEOPLE_ROLES{
+        int id
+        int people_id
+        int role_id
+        String date_role_acquired
+    }
+    
 ```
 
 ## Examples of data in the database

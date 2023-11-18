@@ -3398,14 +3398,43 @@ z-index: 1000;
 <pre class="mermaid mermaid-js">erDiagram
     CUSTOMER ||--o{ ORDER : places
     CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
-    CUSTOMER{
+    SKILLS{
         int id
-        string first_name
-        string last_name
+        String name
+        String description
+        String tag
+        String url
+        String time_commitment
     }
-    DELIVERY-ADDRESS {
+    PEOPLE{
         int id
+        String first_name
+        String last_name
+        String email
+        String linkedin_url
+        String headshot_url
+        String discord_handle
+        String brief_bio
+        String date_joined
     }
+    PEOPLESKILLS{
+        int id
+        int skills_id
+        int people_id
+        String date_acquired
+    }
+    ROLES{
+        int id
+        String name
+        String sort_priority
+    }
+    PEOPLE_ROLES{
+        int id
+        int people_id
+        int role_id
+        String date_role_acquired
+    }
+    
 </pre>
 </div>
 </div>
@@ -3428,7 +3457,7 @@ z-index: 1000;
 
 Ignoring and moving on.</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="14">
 <div>
 
 
@@ -3479,7 +3508,7 @@ Ignoring and moving on.</code></pre>
 
 Ignoring and moving on.</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="18">
 <div>
 
 
