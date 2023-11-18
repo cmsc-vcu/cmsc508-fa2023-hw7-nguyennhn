@@ -101,8 +101,9 @@ except Exception as e:
 ```{mermaid}
 %%| echo: false
 erDiagram
-    CUSTOMER ||--o{ ORDER : places
-    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
+    PEOPLE }o--o{ SKILLS : have
+    PEOPLE }o--o{ ROLES : have
+    
     SKILLS{
         int id
         String name
