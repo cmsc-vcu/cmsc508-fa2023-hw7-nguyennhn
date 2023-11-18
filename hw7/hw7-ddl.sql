@@ -79,7 +79,7 @@ CREATE TABLE people (
 );
 
 # Section 5
-# Populate people with six people.
+# Populate people with ten people.
 # Their last names must exactly be “Person 1”, “Person 2”, etc.
 # Other fields are for you to assign.
 
@@ -89,7 +89,10 @@ insert into people (id,last_name,date_joined) values (3,'Person 3','2023-07-17')
 insert into people (id,last_name,date_joined) values (4,'Person 4','2023-05-27');
 insert into people (id,last_name,date_joined) values (5,'Person 5','2023-06-25');
 insert into people (id,last_name,date_joined) values (6,'Person 6','2023-04-28');
-
+insert into people (id,last_name,date_joined) values (7,'Person 6','2023-04-28');
+insert into people (id,last_name,date_joined) values (8,'Person 6','2023-04-28');
+insert into people (id,last_name,date_joined) values (9,'Person 6','2023-04-28');
+insert into people (id,last_name,date_joined) values (10,'Person 6','2023-04-28');
 
 # Section 6
 # Create peopleskills( id, skills_id, people_id, date_acquired )
